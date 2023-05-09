@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.SqlServer.Types.160.1000.6\build\net462\Microsoft.SqlServer.Types.props" Condition="Exists('..\packages\Microsoft.SqlServer.Types.160.1000.6\build\net462\Microsoft.SqlServer.Types.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -12,6 +13,8 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -36,8 +39,27 @@
     <Reference Include="Guna.UI2, Version=2.0.4.4, Culture=neutral, PublicKeyToken=8b9d14aa5142e261, processorArchitecture=MSIL">
       <HintPath>..\packages\Guna.UI2.WinForms.2.0.4.4\lib\net472\Guna.UI2.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1576.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1576.0\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1576.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1576.0\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1576.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.160.1000.6\lib\net462\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Design" />
     <Reference Include="System.Management" />
@@ -70,6 +92,12 @@
     </Compile>
     <Compile Include="AddMatchForm.Designer.cs">
       <DependentUpon>AddMatchForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddResultForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddResultForm.Designer.cs">
+      <DependentUpon>AddResultForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ChangeDoiBongForm.cs">
       <SubType>Form</SubType>
@@ -125,11 +153,34 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>QLBD.dbml</DependentUpon>
     </Compile>
+    <Compile Include="QL_DOI_BONGDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QL_DOI_BONGDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="RankForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RankForm.Designer.cs">
+      <DependentUpon>RankForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportForm.Designer.cs">
+      <DependentUpon>ReportForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ResultMatchForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ResultMatchForm.Designer.cs">
       <DependentUpon>ResultMatchForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RuleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RuleForm.Designer.cs">
+      <DependentUpon>RuleForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="AddCauThuForm.resx">
       <DependentUpon>AddCauThuForm.cs</DependentUpon>
@@ -139,6 +190,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AddMatchForm.resx">
       <DependentUpon>AddMatchForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddResultForm.resx">
+      <DependentUpon>AddResultForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BangXepHang.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="ChangeDoiBongForm.resx">
       <DependentUpon>ChangeDoiBongForm.cs</DependentUpon>
@@ -166,8 +223,17 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="RankForm.resx">
+      <DependentUpon>RankForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportForm.resx">
+      <DependentUpon>ReportForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ResultMatchForm.resx">
       <DependentUpon>ResultMatchForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RuleForm.resx">
+      <DependentUpon>RuleForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -191,6 +257,17 @@
     </None>
     <None Include="QLBD.dbml.layout">
       <DependentUpon>QLBD.dbml</DependentUpon>
+    </None>
+    <None Include="QL_DOI_BONGDataSet.xsc">
+      <DependentUpon>QL_DOI_BONGDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="QL_DOI_BONGDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>QL_DOI_BONGDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="QL_DOI_BONGDataSet.xss">
+      <DependentUpon>QL_DOI_BONGDataSet.xsd</DependentUpon>
     </None>
     <None Include="Resources\2.png" />
   </ItemGroup>
@@ -222,4 +299,10 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.SqlServer.Types.160.1000.6\build\net462\Microsoft.SqlServer.Types.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.SqlServer.Types.160.1000.6\build\net462\Microsoft.SqlServer.Types.props'))" />
+  </Target>
 </Project>

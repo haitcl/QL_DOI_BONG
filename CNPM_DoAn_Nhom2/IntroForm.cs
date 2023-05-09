@@ -48,7 +48,12 @@ namespace CNPM_DoAn_Nhom2
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            
+            timer1.Stop();
+            this.Hide();
+
+            LoginForm loginForm = new LoginForm();  
+            loginForm.ShowDialog();
+            this.Close();
         }
     }
 }

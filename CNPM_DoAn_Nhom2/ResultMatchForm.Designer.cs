@@ -31,11 +31,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ResultMatchForm));
             this.pnlTop = new System.Windows.Forms.Panel();
-            this.lblGio = new System.Windows.Forms.Label();
             this.lblSan = new System.Windows.Forms.Label();
             this.lblDoi2 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.lblNgay = new System.Windows.Forms.Label();
@@ -44,25 +43,27 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.pnlMain = new System.Windows.Forms.Panel();
             this.dgvMatch = new System.Windows.Forms.DataGridView();
-            this.pnlBot = new System.Windows.Forms.Panel();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.stt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cauthu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Doi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Loaibanthang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Thoidiem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pnlBot = new System.Windows.Forms.Panel();
+            this.ptcAdd = new System.Windows.Forms.PictureBox();
+            this.ptcSave = new System.Windows.Forms.PictureBox();
             this.pnlTop.SuspendLayout();
-            this.pnlMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMatch)).BeginInit();
+            this.pnlBot.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ptcAdd)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptcSave)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlTop
             // 
-            this.pnlTop.Controls.Add(this.lblGio);
             this.pnlTop.Controls.Add(this.lblSan);
             this.pnlTop.Controls.Add(this.lblDoi2);
-            this.pnlTop.Controls.Add(this.label10);
             this.pnlTop.Controls.Add(this.label11);
             this.pnlTop.Controls.Add(this.label12);
             this.pnlTop.Controls.Add(this.lblNgay);
@@ -74,18 +75,8 @@
             this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTop.Location = new System.Drawing.Point(0, 0);
             this.pnlTop.Name = "pnlTop";
-            this.pnlTop.Size = new System.Drawing.Size(937, 146);
+            this.pnlTop.Size = new System.Drawing.Size(937, 130);
             this.pnlTop.TabIndex = 0;
-            // 
-            // lblGio
-            // 
-            this.lblGio.AutoSize = true;
-            this.lblGio.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGio.Location = new System.Drawing.Point(661, 93);
-            this.lblGio.Name = "lblGio";
-            this.lblGio.Size = new System.Drawing.Size(65, 24);
-            this.lblGio.TabIndex = 11;
-            this.lblGio.Text = "label7";
             // 
             // lblSan
             // 
@@ -106,16 +97,6 @@
             this.lblDoi2.Size = new System.Drawing.Size(65, 24);
             this.lblDoi2.TabIndex = 9;
             this.lblDoi2.Text = "label9";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(569, 93);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(45, 24);
-            this.label10.TabIndex = 8;
-            this.label10.Text = "Giờ";
             // 
             // label11
             // 
@@ -197,15 +178,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Đội 1";
             // 
-            // pnlMain
-            // 
-            this.pnlMain.Controls.Add(this.dgvMatch);
-            this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlMain.Location = new System.Drawing.Point(0, 146);
-            this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(937, 394);
-            this.pnlMain.TabIndex = 1;
-            // 
             // dgvMatch
             // 
             this.dgvMatch.BackgroundColor = System.Drawing.Color.White;
@@ -220,6 +192,7 @@
             this.dgvMatch.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvMatch.ColumnHeadersHeight = 35;
             this.dgvMatch.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ID,
             this.stt,
             this.Cauthu,
             this.Doi,
@@ -236,7 +209,7 @@
             this.dgvMatch.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvMatch.EnableHeadersVisualStyles = false;
             this.dgvMatch.GridColor = System.Drawing.Color.Silver;
-            this.dgvMatch.Location = new System.Drawing.Point(0, 0);
+            this.dgvMatch.Location = new System.Drawing.Point(0, 130);
             this.dgvMatch.MultiSelect = false;
             this.dgvMatch.Name = "dgvMatch";
             this.dgvMatch.RowHeadersWidth = 51;
@@ -246,16 +219,18 @@
             this.dgvMatch.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvMatch.RowTemplate.Height = 24;
             this.dgvMatch.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMatch.Size = new System.Drawing.Size(937, 394);
+            this.dgvMatch.Size = new System.Drawing.Size(937, 354);
             this.dgvMatch.TabIndex = 2;
+            this.dgvMatch.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMatch_CellClick);
             // 
-            // pnlBot
+            // ID
             // 
-            this.pnlBot.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlBot.Location = new System.Drawing.Point(0, 492);
-            this.pnlBot.Name = "pnlBot";
-            this.pnlBot.Size = new System.Drawing.Size(937, 48);
-            this.pnlBot.TabIndex = 1;
+            this.ID.DataPropertyName = "ID";
+            this.ID.HeaderText = "IDKetQua";
+            this.ID.MinimumWidth = 6;
+            this.ID.Name = "ID";
+            this.ID.Visible = false;
+            this.ID.Width = 125;
             // 
             // stt
             // 
@@ -267,6 +242,7 @@
             // 
             // Cauthu
             // 
+            this.Cauthu.DataPropertyName = "TenCauThu";
             this.Cauthu.HeaderText = "Cầu thủ";
             this.Cauthu.MinimumWidth = 6;
             this.Cauthu.Name = "Cauthu";
@@ -274,6 +250,7 @@
             // 
             // Doi
             // 
+            this.Doi.DataPropertyName = "DoiBong";
             this.Doi.HeaderText = "Đội ";
             this.Doi.MinimumWidth = 6;
             this.Doi.Name = "Doi";
@@ -281,6 +258,7 @@
             // 
             // Loaibanthang
             // 
+            this.Loaibanthang.DataPropertyName = "LoaiBanThang";
             this.Loaibanthang.HeaderText = "Loại bàn thắng";
             this.Loaibanthang.MinimumWidth = 6;
             this.Loaibanthang.Name = "Loaibanthang";
@@ -289,25 +267,64 @@
             // Thoidiem
             // 
             this.Thoidiem.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Thoidiem.DataPropertyName = "Thoidiem";
             this.Thoidiem.HeaderText = "Thời điểm";
             this.Thoidiem.MinimumWidth = 6;
             this.Thoidiem.Name = "Thoidiem";
+            // 
+            // pnlBot
+            // 
+            this.pnlBot.Controls.Add(this.ptcSave);
+            this.pnlBot.Controls.Add(this.ptcAdd);
+            this.pnlBot.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlBot.Location = new System.Drawing.Point(0, 484);
+            this.pnlBot.Name = "pnlBot";
+            this.pnlBot.Size = new System.Drawing.Size(937, 56);
+            this.pnlBot.TabIndex = 2;
+            // 
+            // ptcAdd
+            // 
+            this.ptcAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ptcAdd.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ptcAdd.Image = ((System.Drawing.Image)(resources.GetObject("ptcAdd.Image")));
+            this.ptcAdd.Location = new System.Drawing.Point(870, 3);
+            this.ptcAdd.Name = "ptcAdd";
+            this.ptcAdd.Size = new System.Drawing.Size(55, 50);
+            this.ptcAdd.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptcAdd.TabIndex = 7;
+            this.ptcAdd.TabStop = false;
+            this.ptcAdd.Click += new System.EventHandler(this.ptcAdd_Click);
+            // 
+            // ptcSave
+            // 
+            this.ptcSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ptcSave.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ptcSave.Image = ((System.Drawing.Image)(resources.GetObject("ptcSave.Image")));
+            this.ptcSave.Location = new System.Drawing.Point(809, 3);
+            this.ptcSave.Name = "ptcSave";
+            this.ptcSave.Size = new System.Drawing.Size(55, 50);
+            this.ptcSave.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptcSave.TabIndex = 8;
+            this.ptcSave.TabStop = false;
+            this.ptcSave.Click += new System.EventHandler(this.ptcSave_Click);
             // 
             // ResultMatchForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(937, 540);
+            this.Controls.Add(this.dgvMatch);
             this.Controls.Add(this.pnlBot);
-            this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.pnlTop);
             this.Name = "ResultMatchForm";
             this.Text = "Kết quả trận đấu";
             this.Load += new System.EventHandler(this.ResultMatchForm_Load);
             this.pnlTop.ResumeLayout(false);
             this.pnlTop.PerformLayout();
-            this.pnlMain.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMatch)).EndInit();
+            this.pnlBot.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ptcAdd)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptcSave)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -315,12 +332,8 @@
         #endregion
 
         private System.Windows.Forms.Panel pnlTop;
-        private System.Windows.Forms.Panel pnlMain;
-        private System.Windows.Forms.Panel pnlBot;
-        private System.Windows.Forms.Label lblGio;
         private System.Windows.Forms.Label lblSan;
         private System.Windows.Forms.Label lblDoi2;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label lblNgay;
@@ -330,10 +343,14 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgvMatch;
+        private System.Windows.Forms.Panel pnlBot;
+        private System.Windows.Forms.PictureBox ptcAdd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn stt;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cauthu;
         private System.Windows.Forms.DataGridViewTextBoxColumn Doi;
         private System.Windows.Forms.DataGridViewTextBoxColumn Loaibanthang;
         private System.Windows.Forms.DataGridViewTextBoxColumn Thoidiem;
+        private System.Windows.Forms.PictureBox ptcSave;
     }
 }

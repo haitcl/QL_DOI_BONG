@@ -131,6 +131,7 @@
             this.optBaoCao.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.optBaoCao.TabIndex = 29;
             this.optBaoCao.TabStop = false;
+            this.optBaoCao.Click += new System.EventHandler(this.optBaoCao_Click);
             // 
             // label8
             // 
@@ -197,6 +198,7 @@
             this.optQuyDinh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.optQuyDinh.TabIndex = 2;
             this.optQuyDinh.TabStop = false;
+            this.optQuyDinh.Click += new System.EventHandler(this.optQuyDinh_Click);
             // 
             // optDangXuat
             // 
@@ -306,6 +308,7 @@
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FIT LEAGUE";
+
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.optTrandau)).EndInit();

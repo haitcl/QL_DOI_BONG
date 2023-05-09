@@ -60,7 +60,7 @@ namespace CNPM_DoAn_Nhom2
             {
                 if(txtNewPassword.Text.Length>=6)
                 {
-                    Account account = db.Accounts.SingleOrDefault(u=>u.UserName==txtUser.Text.Trim());
+                    Account account = db.Accounts.SingleOrDefault(u=>u.Username==txtUser.Text.Trim());
                     account.Password = txtNewPassword.Text;
                     db.SubmitChanges();
                     MessageBox.Show("Cập nhật mật khẩu mới thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -88,7 +88,7 @@ namespace CNPM_DoAn_Nhom2
             }
             else
             {
-                Account account = db.Accounts.SingleOrDefault(a => a.UserName == txtUser.Text.Trim());
+                Account account = db.Accounts.SingleOrDefault(a => a.Username == txtUser.Text.Trim());
                 if(account == null)
                 {
                     MessageBox.Show("Tài khoản không tồn tại !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

@@ -59,5 +59,18 @@ namespace CNPM_DoAn_Nhom2
                 Loaddgv();
             }    
         }
+
+        private void txtSearchMatch_TextChanged(object sender, EventArgs e)
+        {
+            if(txtSearchMatch.Text.Length> 0)
+            {
+                dgvMatch.DataSource = db.tbl_Lichthidaus.Where(p => p.tbl_Doi_Bong.Ten_Doi_Bong.Contains(txtSearchMatch.Text) || p.tbl_Doi_Bong1.Ten_Doi_Bong.Contains(txtSearchMatch.Text)).ToList().Select((p, i) => new { index = i + 1, p.ID, TenDoi1 = p.tbl_Doi_Bong.Ten_Doi_Bong, TenDoi2 = p.tbl_Doi_Bong1.Ten_Doi_Bong, p.TenSan, p.NgayGio, p.Doi1, p.Doi2 }).ToList();
+            }   
+            else
+            {
+                dgvMatch.DataSource = db.tbl_Lichthidaus.ToList().Select((p, i) => new { index = i + 1, p.ID, TenDoi1 = p.tbl_Doi_Bong.Ten_Doi_Bong, TenDoi2 = p.tbl_Doi_Bong1.Ten_Doi_Bong, p.TenSan, p.NgayGio, p.Doi1, p.Doi2 }).ToList();
+            }    
+            
+        }
     }
 }

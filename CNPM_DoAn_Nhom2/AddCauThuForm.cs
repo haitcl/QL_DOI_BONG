@@ -24,6 +24,7 @@ namespace CNPM_DoAn_Nhom2
 
         QLBDDataContext db = new QLBDDataContext();
         tbl_Cauthu tbl_Cauthu = null;
+       
         public AddCauThuForm(tbl_Cauthu cauthu=null)
         {
             InitializeComponent();
@@ -91,13 +92,43 @@ namespace CNPM_DoAn_Nhom2
                 tbl.GhiChu = txtGhichu.Text;
                 tbl.NgaySinh = dtpkNgSinh.Value;
                 tbl.Doi =(int)cbbTenDoi.SelectedValue;
-                db.tbl_Cauthus.InsertOnSubmit(tbl);
-                db.SubmitChanges();
-                MessageBox.Show("Đã thêm thành công cầu thủ này", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close();
+                if(CheckDoiBong((int)cbbTenDoi.SelectedValue,dtpkNgSinh.Value.Year,cbbLoaiCauthu.Text))
+                {
+                    db.tbl_Cauthus.InsertOnSubmit(tbl);
+                    db.SubmitChanges();
+                    MessageBox.Show("Đã thêm thành công cầu thủ này", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }    
+               
             }    
         }
-
+        private bool CheckDoiBong(int Doi,int NamSinh,string strCheck)
+        {
+            tbl_QuiDinh tblQD = db.tbl_QuiDinhs.SingleOrDefault(p => p.ID == 1);
+            int SLCauthu = db.tbl_Cauthus.Where(p=>p.Doi== Doi).Count();
+            int SLNgoainuoc = db.tbl_Cauthus.Where(p => p.Doi == Doi && p.LoaiCauthu.Contains("Ngoài nước")).Count();
+            int TuoiCauthu= DateTime.Now.Year-NamSinh;
+            if (SLCauthu >= tblQD.SoLuongCauThu) {
+                MessageBox.Show("Đội bóng này đã quá số lượng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
+            if(strCheck=="Ngoài nước")
+            {
+                if (SLNgoainuoc >= tblQD.SoLuongCauThuNuocNgoai)
+                {
+                    MessageBox.Show("Đội bóng này đã quá số lượng cầu thủ ngoài nước", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return false;
+                }
+            }    
+            
+            if(TuoiCauthu < tblQD.SoTuoiToiThieu ||TuoiCauthu>tblQD.ThoiGianGhiBanToiDa )
+            {
+                MessageBox.Show("Tuổi cầu thủ không đúng quy định", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }    
+            return true;
+           
+        }
         private void btnSua_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtTenCauthu.Text) || string.IsNullOrEmpty(cbbLoaiCauthu.Text))
@@ -113,9 +144,13 @@ namespace CNPM_DoAn_Nhom2
                 tmp.Doi=int.Parse(cbbTenDoi.SelectedValue.ToString());
                 tmp.TongSoBanThang = int.Parse(nupbanthang.Value.ToString());
                 tmp.NgaySinh=dtpkNgSinh.Value;
-                db.SubmitChanges();
-                MessageBox.Show("Thay đổi thông tin thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close();
+                if (CheckDoiBong((int)cbbTenDoi.SelectedValue, dtpkNgSinh.Value.Year, cbbLoaiCauthu.Text))
+                {
+                    db.SubmitChanges();
+                    MessageBox.Show("Thay đổi thông tin thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }    
+                   
             }    
         }
 

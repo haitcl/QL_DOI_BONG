@@ -39,6 +39,12 @@
             this.tbpDoibong = new System.Windows.Forms.TabPage();
             this.pnlContainer = new System.Windows.Forms.Panel();
             this.dgvDoibong = new System.Windows.Forms.DataGridView();
+            this.stt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CauThu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NgaySinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LoaiCauThu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Doi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ghichu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlBottom = new System.Windows.Forms.Panel();
             this.ptcDelete = new System.Windows.Forms.PictureBox();
             this.ptcChange = new System.Windows.Forms.PictureBox();
@@ -65,14 +71,9 @@
             this.TenCauthu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ngay_Sinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Loai_Cau_Thu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TongBanThang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Team = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Note = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CauThu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NgaySinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LoaiCauThu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Doi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ghichu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbcMain.SuspendLayout();
             this.tbpDoibong.SuspendLayout();
             this.pnlContainer.SuspendLayout();
@@ -185,6 +186,55 @@
             this.dgvDoibong.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDoibong.Size = new System.Drawing.Size(1009, 459);
             this.dgvDoibong.TabIndex = 0;
+            // 
+            // stt
+            // 
+            this.stt.DataPropertyName = "rownumber";
+            this.stt.HeaderText = "STT";
+            this.stt.MinimumWidth = 6;
+            this.stt.Name = "stt";
+            this.stt.Width = 90;
+            // 
+            // CauThu
+            // 
+            this.CauThu.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CauThu.DataPropertyName = "TenCauthu";
+            this.CauThu.HeaderText = "Cầu thủ";
+            this.CauThu.MinimumWidth = 6;
+            this.CauThu.Name = "CauThu";
+            // 
+            // NgaySinh
+            // 
+            this.NgaySinh.DataPropertyName = "NgaySinh";
+            this.NgaySinh.HeaderText = "Ngày sinh";
+            this.NgaySinh.MinimumWidth = 6;
+            this.NgaySinh.Name = "NgaySinh";
+            this.NgaySinh.Width = 125;
+            // 
+            // LoaiCauThu
+            // 
+            this.LoaiCauThu.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.LoaiCauThu.DataPropertyName = "LoaiCauthu";
+            this.LoaiCauThu.HeaderText = "Loại cầu thủ";
+            this.LoaiCauThu.MinimumWidth = 6;
+            this.LoaiCauThu.Name = "LoaiCauThu";
+            // 
+            // Doi
+            // 
+            this.Doi.DataPropertyName = "Doi";
+            this.Doi.HeaderText = "Đội";
+            this.Doi.MinimumWidth = 6;
+            this.Doi.Name = "Doi";
+            this.Doi.Visible = false;
+            this.Doi.Width = 125;
+            // 
+            // Ghichu
+            // 
+            this.Ghichu.DataPropertyName = "GhiChu";
+            this.Ghichu.HeaderText = "Ghi chú";
+            this.Ghichu.MinimumWidth = 6;
+            this.Ghichu.Name = "Ghichu";
+            this.Ghichu.Width = 125;
             // 
             // pnlBottom
             // 
@@ -386,6 +436,7 @@
             this.TenCauthu,
             this.Ngay_Sinh,
             this.Loai_Cau_Thu,
+            this.TongBanThang,
             this.Team,
             this.Note});
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -519,6 +570,14 @@
             this.Loai_Cau_Thu.MinimumWidth = 6;
             this.Loai_Cau_Thu.Name = "Loai_Cau_Thu";
             // 
+            // TongBanThang
+            // 
+            this.TongBanThang.DataPropertyName = "TongSoBanThang";
+            this.TongBanThang.HeaderText = "Ghi bàn";
+            this.TongBanThang.MinimumWidth = 6;
+            this.TongBanThang.Name = "TongBanThang";
+            this.TongBanThang.Width = 90;
+            // 
             // Team
             // 
             this.Team.DataPropertyName = "Doi";
@@ -535,55 +594,6 @@
             this.Note.MinimumWidth = 6;
             this.Note.Name = "Note";
             this.Note.Width = 125;
-            // 
-            // stt
-            // 
-            this.stt.DataPropertyName = "rownumber";
-            this.stt.HeaderText = "STT";
-            this.stt.MinimumWidth = 6;
-            this.stt.Name = "stt";
-            this.stt.Width = 90;
-            // 
-            // CauThu
-            // 
-            this.CauThu.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.CauThu.DataPropertyName = "TenCauthu";
-            this.CauThu.HeaderText = "Cầu thủ";
-            this.CauThu.MinimumWidth = 6;
-            this.CauThu.Name = "CauThu";
-            // 
-            // NgaySinh
-            // 
-            this.NgaySinh.DataPropertyName = "NgaySinh";
-            this.NgaySinh.HeaderText = "Ngày sinh";
-            this.NgaySinh.MinimumWidth = 6;
-            this.NgaySinh.Name = "NgaySinh";
-            this.NgaySinh.Width = 125;
-            // 
-            // LoaiCauThu
-            // 
-            this.LoaiCauThu.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.LoaiCauThu.DataPropertyName = "LoaiCauthu";
-            this.LoaiCauThu.HeaderText = "Loại cầu thủ";
-            this.LoaiCauThu.MinimumWidth = 6;
-            this.LoaiCauThu.Name = "LoaiCauThu";
-            // 
-            // Doi
-            // 
-            this.Doi.DataPropertyName = "Doi";
-            this.Doi.HeaderText = "Đội";
-            this.Doi.MinimumWidth = 6;
-            this.Doi.Name = "Doi";
-            this.Doi.Visible = false;
-            this.Doi.Width = 125;
-            // 
-            // Ghichu
-            // 
-            this.Ghichu.DataPropertyName = "GhiChu";
-            this.Ghichu.HeaderText = "Ghi chú";
-            this.Ghichu.MinimumWidth = 6;
-            this.Ghichu.Name = "Ghichu";
-            this.Ghichu.Width = 125;
             // 
             // ManagerForm
             // 
@@ -644,18 +654,19 @@
         private System.Windows.Forms.PictureBox ptcAddCauthu;
         private System.Windows.Forms.PictureBox ptcDelete;
         private System.Windows.Forms.PictureBox ptcChange;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TenCauthu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Ngay_Sinh;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Loai_Cau_Thu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Team;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Note;
         private System.Windows.Forms.DataGridViewTextBoxColumn stt;
         private System.Windows.Forms.DataGridViewTextBoxColumn CauThu;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgaySinh;
         private System.Windows.Forms.DataGridViewTextBoxColumn LoaiCauThu;
         private System.Windows.Forms.DataGridViewTextBoxColumn Doi;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ghichu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TenCauthu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ngay_Sinh;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Loai_Cau_Thu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TongBanThang;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Team;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Note;
     }
 }

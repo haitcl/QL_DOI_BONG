@@ -58,7 +58,7 @@ namespace CNPM_DoAn_Nhom2
                 MessageBox.Show("Vui lòng điền thông tin tài khoản!");
                 return;
             }
-            Account account = db.Accounts.SingleOrDefault(p => p.UserName == user && p.Password == password);
+            Account account = db.Accounts.SingleOrDefault(p => p.Username == user && p.Password == password);
             if(account == null)
             {
                 lblCheck.Visible = true;

@@ -41,7 +41,7 @@ namespace CNPM_DoAn_Nhom2
             if(cbbDoibong.SelectedValue !=null)
             dgvDoibong.DataSource = db.tbl_Cauthus.ToList().Select((p,i) => new {rownumber=i+1, p.TenCauthu, p.NgaySinh, p.LoaiCauthu, p.GhiChu,p.Doi }).Where(p => p.Doi==(int)cbbDoibong.SelectedValue).ToList();
 
-            dgvCauthu.DataSource = db.tbl_Cauthus.ToList().Select((p, i) => new { index = i + 1, p.TenCauthu, p.NgaySinh, p.LoaiCauthu, p.GhiChu, p.ID }).ToList();
+            dgvCauthu.DataSource = db.tbl_Cauthus.ToList().Select((p, i) => new { index = i + 1, p.TenCauthu, p.NgaySinh, p.LoaiCauthu, p.GhiChu, p.ID,p.TongSoBanThang }).ToList();
              
             LoadCBBDoiBong();
         }
@@ -56,7 +56,7 @@ namespace CNPM_DoAn_Nhom2
             
             if(txtSearch.Text.Length > 0)
             {
-                dgvDoibong.DataSource = db.tbl_Cauthus.ToList().Select((p,i) => new {rownumber=i+1, p.TenCauthu, p.NgaySinh, p.LoaiCauthu, p.GhiChu, p.Doi}).Where(p => p.Doi == (int)cbbDoibong.SelectedValue).Where(p=> p.TenCauthu.Contains(txtSearch.Text)|| p.GhiChu.Contains(txtSearch.Text)||p.LoaiCauthu.Contains(txtSearch.Text));
+                dgvDoibong.DataSource = db.tbl_Cauthus.ToList().Select((p,i) => new {rownumber=i+1, p.TenCauthu, p.NgaySinh, p.LoaiCauthu, p.GhiChu, p.Doi}).Where(p => p.Doi == (int)cbbDoibong.SelectedValue).Where(p=> p.TenCauthu.Contains(txtSearch.Text)|| p.GhiChu.Contains(txtSearch.Text)||p.LoaiCauthu.Contains(txtSearch.Text)).ToList();
             }   
             else
             {
@@ -83,11 +83,11 @@ namespace CNPM_DoAn_Nhom2
         {
             if (txtSearchCauthu.Text.Length > 0)
             {
-                dgvCauthu.DataSource = db.tbl_Cauthus.ToList().Select((p,i) => new {index=i+1, p.TenCauthu, p.NgaySinh, p.LoaiCauthu, p.GhiChu,p.ID }).Where(p => p.TenCauthu.Contains(txtSearchCauthu.Text) || p.GhiChu.Contains(txtSearchCauthu.Text) || p.LoaiCauthu.Contains(txtSearchCauthu.Text));
+                dgvCauthu.DataSource = db.tbl_Cauthus.ToList().Select((p,i) => new {index=i+1, p.TenCauthu, p.NgaySinh, p.LoaiCauthu, p.GhiChu,p.ID,p.TongSoBanThang }).Where(p => p.TenCauthu.Contains(txtSearchCauthu.Text) || p.GhiChu.Contains(txtSearchCauthu.Text) || p.LoaiCauthu.Contains(txtSearchCauthu.Text)).ToList();
             }
             else
             {
-                dgvCauthu.DataSource = db.tbl_Cauthus.ToList().Select((p,i) => new {index=i+1, p.TenCauthu, p.NgaySinh, p.LoaiCauthu, p.GhiChu, p.ID });
+                dgvCauthu.DataSource = db.tbl_Cauthus.ToList().Select((p,i) => new {index=i+1, p.TenCauthu, p.NgaySinh, p.LoaiCauthu, p.GhiChu, p.ID }).ToList();
             }
         }
 
@@ -95,8 +95,13 @@ namespace CNPM_DoAn_Nhom2
 
         private void ptcDelete_Click(object sender, EventArgs e)
         {
+            //Xóa Cầu thủ
             var tmp = db.tbl_Cauthus.Where(p => p.Doi == int.Parse(cbbDoibong.SelectedValue.ToString())).ToList();
             if (tmp != null) { db.tbl_Cauthus.DeleteAllOnSubmit(tmp); db.SubmitChanges(); }
+            //Xóa xếp hạng
+            var tmpXephang = db.tbl_XepHangs.Where(p => p.Doi == int.Parse(cbbDoibong.SelectedValue.ToString())).ToList();
+            if (tmpXephang != null) { db.tbl_XepHangs.DeleteAllOnSubmit(tmpXephang); db.SubmitChanges(); }
+            //Xóa lịch thi đấu
             var tmpLichthidau = db.tbl_Lichthidaus.Where(p => p.Doi1 == int.Parse(cbbDoibong.SelectedValue.ToString()) || p.Doi2 == int.Parse(cbbDoibong.SelectedValue.ToString()));
             if(tmpLichthidau != null)
             {

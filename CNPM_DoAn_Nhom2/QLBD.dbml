@@ -1,5 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="QL_DOI_BONG" Class="QLBDDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-C0FC3VE;Initial Catalog=QL_DOI_BONG;Integrated Security=True" SettingsObjectName="CNPM_DoAn_Nhom2.Properties.Settings" SettingsPropertyName="QL_DOI_BONGConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Account" Member="Accounts">
+    <Type Name="Account">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Username" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Password" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.tbl_Cauthu" Member="tbl_Cauthus">
     <Type Name="tbl_Cauthu">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -20,6 +28,18 @@
       <Association Name="tbl_Doi_Bong_tbl_Cauthu" Member="tbl_Cauthus" ThisKey="ID" OtherKey="Doi" Type="tbl_Cauthu" />
       <Association Name="tbl_Doi_Bong_tbl_Lichthidau" Member="tbl_Lichthidaus" ThisKey="ID" OtherKey="Doi1" Type="tbl_Lichthidau" />
       <Association Name="tbl_Doi_Bong_tbl_Lichthidau1" Member="tbl_Lichthidaus1" ThisKey="ID" OtherKey="Doi2" Type="tbl_Lichthidau" />
+      <Association Name="tbl_Doi_Bong_tbl_XepHang" Member="tbl_XepHangs" ThisKey="ID" OtherKey="Doi" Type="tbl_XepHang" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_KetQua" Member="tbl_KetQuas">
+    <Type Name="tbl_KetQua">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IDDoi" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TenCauThu" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="LoaiBanThang" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Thoidiem" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="IDLichThiDau" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="tbl_Lichthidau_tbl_KetQua" Member="tbl_Lichthidau" ThisKey="IDLichThiDau" OtherKey="ID" Type="tbl_Lichthidau" IsForeignKey="true" DeleteRule="CASCADE" />
     </Type>
   </Table>
   <Table Name="dbo.tbl_Lichthidau" Member="tbl_Lichthidaus">
@@ -29,15 +49,36 @@
       <Column Name="Doi2" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="NgayGio" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="TenSan" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Association Name="tbl_Lichthidau_tbl_KetQua" Member="tbl_KetQuas" ThisKey="ID" OtherKey="IDLichThiDau" Type="tbl_KetQua" />
       <Association Name="tbl_Doi_Bong_tbl_Lichthidau" Member="tbl_Doi_Bong" ThisKey="Doi1" OtherKey="ID" Type="tbl_Doi_Bong" IsForeignKey="true" />
       <Association Name="tbl_Doi_Bong_tbl_Lichthidau1" Member="tbl_Doi_Bong1" ThisKey="Doi2" OtherKey="ID" Type="tbl_Doi_Bong" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Account" Member="Accounts">
-    <Type Name="Account">
-      <Column Name="UserName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Password" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+  <Table Name="dbo.tbl_QuiDinh" Member="tbl_QuiDinhs">
+    <Type Name="tbl_QuiDinh">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SoTuoiToiThieu" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SoTuoiLonNhat" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ThoiGianGhiBanToiDa" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DiemThang" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DiemHoa" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DiemThu" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SoLuongCauThu" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SoLuongCauThuNuocNgoai" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_XepHang" Member="tbl_XepHangs">
+    <Type Name="tbl_XepHang">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Doi" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Thang" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Hoa" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Thua" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DiemSo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="HieuSo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="XepHang" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IDLichThiDau" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="tbl_Doi_Bong_tbl_XepHang" Member="tbl_Doi_Bong" ThisKey="Doi" OtherKey="ID" Type="tbl_Doi_Bong" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>
